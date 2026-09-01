@@ -60,8 +60,8 @@ export default function Navbar() {
             </div>
           </Link>
 
-          {/* Desktop Navigation Links */}
-          <nav className="hidden md:flex items-center gap-1 lg:gap-2 bg-zinc-900/60 backdrop-blur-md px-4 py-1.5 rounded-full border border-white/10 shadow-inner">
+          {/* Desktop Navigation Links (Hidden on mobile & tablet, visible on lg and above) */}
+          <nav className="hidden lg:flex items-center gap-1.5 lg:gap-2 bg-zinc-900/60 backdrop-blur-md px-4 py-1.5 rounded-full border border-white/10 shadow-inner">
             {navLinks.map((link) => {
               const active = isActive(link.path);
               return (
@@ -89,10 +89,10 @@ export default function Navbar() {
 
           {/* Right Action Buttons */}
           <div className="flex items-center gap-3">
-            {/* Table Reservation CTA (Desktop) */}
+            {/* Table Reservation CTA (Desktop xl+) */}
             <Link
               to="/reservation"
-              className="hidden lg:flex items-center gap-2 px-4 py-2 text-xs font-semibold uppercase tracking-wider text-amber-300 bg-amber-500/10 hover:bg-amber-500/20 border border-amber-500/30 hover:border-amber-500/60 rounded-full transition-all duration-200"
+              className="hidden xl:flex items-center gap-2 px-4 py-2 text-xs font-semibold uppercase tracking-wider text-amber-300 bg-amber-500/10 hover:bg-amber-500/20 border border-amber-500/30 hover:border-amber-500/60 rounded-full transition-all duration-200"
             >
               <FiCalendar className="w-3.5 h-3.5 text-amber-400" />
               <span>Book Table</span>
@@ -125,10 +125,10 @@ export default function Navbar() {
               </AnimatePresence>
             </motion.button>
 
-            {/* Mobile Menu Hamburger Button */}
+            {/* Mobile & Tablet Hamburger Button */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="md:hidden p-2.5 rounded-xl bg-zinc-900/80 border border-zinc-700/80 text-zinc-200 hover:text-white hover:bg-zinc-800 transition-colors"
+              className="lg:hidden p-2.5 rounded-xl bg-zinc-900/80 border border-zinc-700/80 text-zinc-200 hover:text-white hover:bg-zinc-800 transition-colors"
               aria-label="Toggle navigation menu"
             >
               {mobileMenuOpen ? (
@@ -141,7 +141,7 @@ export default function Navbar() {
         </div>
       </header>
 
-      {/* Mobile Slide-in Navigation Drawer */}
+      {/* Mobile & Tablet Slide-in Navigation Drawer */}
       <AnimatePresence>
         {mobileMenuOpen && (
           <>
@@ -151,7 +151,7 @@ export default function Navbar() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setMobileMenuOpen(false)}
-              className="fixed inset-0 z-40 bg-black/80 backdrop-blur-sm md:hidden"
+              className="fixed inset-0 z-40 bg-black/80 backdrop-blur-sm lg:hidden"
             />
 
             {/* Drawer */}
@@ -160,7 +160,7 @@ export default function Navbar() {
               animate={{ x: 0 }}
               exit={{ x: '100%' }}
               transition={{ type: 'spring', damping: 25, stiffness: 280 }}
-              className="fixed top-0 right-0 bottom-0 w-[80%] max-w-sm bg-zinc-950 border-l border-zinc-800/80 z-50 p-6 flex flex-col justify-between md:hidden shadow-2xl"
+              className="fixed top-0 right-0 bottom-0 w-[80%] max-w-sm bg-zinc-950 border-l border-zinc-800/80 z-50 p-6 flex flex-col justify-between lg:hidden shadow-2xl"
             >
               <div>
                 {/* Header in drawer */}
